@@ -16,7 +16,7 @@ export default function Hero() {
         <div className="hero-image">
           <img
             alt="Team India"
-            src="https://upload.wikimedia.org/wikipedia/commons/2/24/India_cricket_team_2018.jpg"
+            src="https://i.pinimg.com/736x/2c/bd/fb/2cbdfb1a72b0c80e3f7ce618fd7297e4.jpg"
           />
         </div>
       </div>
