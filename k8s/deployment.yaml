@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: indian-cricket-frontend
+  labels:
+    app: indian-cricket-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: indian-cricket-frontend
+  template:
+    metadata:
+      labels:
+        app: indian-cricket-frontend
+    spec:
+      containers:
+        - name: indian-cricket-frontend
+          image: ux007893/indianfrontend:v1.0
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: indian-cricket-frontend-svc
+spec:
+  type: LoadBalancer   # ✅ Best option for AKS (creates Azure public LB)
+  selector:
+    app: indian-cricket-frontend
+  ports:
+    - port: 80         # Service port (external)
+      targetPort: 80   # Container port
+
